@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-const ChatContext = createContext({});
+const ChatContext = createContext<any>(null);
 
 type Props = {
   children: React.ReactNode;
