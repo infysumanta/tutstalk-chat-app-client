@@ -29,6 +29,7 @@ import UserListItem from "./user-list-item";
 import { useRouter } from "next/navigation";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import ProfileModal from "../modal/profile-modal";
+import { SERVER_URL } from "@/lib/constant";
 // import NotificationBadge from "react-notification-badge";
 // import { Effect } from "react-notification-badge";
 
@@ -77,7 +78,10 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(
+        `${SERVER_URL}/api/v1/users?search=${search}`,
+        config,
+      );
 
       setLoading(false);
       setSearchResult(data);
@@ -104,7 +108,11 @@ function SideDrawer() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(`/api/chat`, { userId }, config);
+      const { data } = await axios.post(
+        `${SERVER_URL}/api/v1/chats`,
+        { userId },
+        config,
+      );
 
       if (!chats.find((c: { _id: any }) => c._id === data._id))
         setChats([data, ...chats]);
@@ -137,7 +145,7 @@ function SideDrawer() {
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i className="fas fa-search"></i>
-            <Text sx={{ base: "none", md: "flex" }} px={4}>
+            <Text display={{ base: "none", md: "flex" }} px={4}>
               Search User
             </Text>
           </Button>
@@ -203,7 +211,7 @@ function SideDrawer() {
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
           <DrawerBody>
-            <Box sx="flex" pb={2}>
+            <Box display="flex" pb={2}>
               <Input
                 placeholder="Search by name or email"
                 mr={2}
@@ -223,7 +231,7 @@ function SideDrawer() {
                 />
               ))
             )}
-            {loadingChat && <Spinner ml="auto" sx="flex" />}
+            {loadingChat && <Spinner ml="auto" display="flex" />}
           </DrawerBody>
         </DrawerContent>
       </Drawer>

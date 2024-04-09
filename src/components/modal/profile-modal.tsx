@@ -29,7 +29,7 @@ const ProfileModal = ({
         <span onClick={onOpen}>{children}</span>
       ) : (
         <IconButton
-          sx={{ base: "flex" }}
+          display={{ base: "flex" }}
           aria-label="View Profile"
           icon={<ViewIcon />}
           onClick={onOpen}
@@ -41,14 +41,14 @@ const ProfileModal = ({
           <ModalHeader
             fontSize="40px"
             fontFamily="Work sans"
-            sx="flex"
+            display="flex"
             justifyContent="center"
           >
             {user.name}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
-            sx="flex"
+            display="flex"
             flexDir="column"
             alignItems="center"
             justifyContent="space-between"

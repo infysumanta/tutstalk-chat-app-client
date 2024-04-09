@@ -19,7 +19,7 @@ const UserListItem = ({
         color: "white",
       }}
       w="100%"
-      sx="flex"
+      display="flex"
       alignItems="center"
       color="black"
       px={3}
