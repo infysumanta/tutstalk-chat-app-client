@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ChakraThemeProviders } from "@/provider/chakra-provider";
+import ChatProvider from "@/provider/chat-peovider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ChakraThemeProviders>
+          <ChatProvider>{children}</ChatProvider>
+        </ChakraThemeProviders>
+      </body>
     </html>
   );
 }
